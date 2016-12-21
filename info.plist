@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.verykiwi.regex.v1.7.0</string>
+	<key>connections</key>
+	<dict>
+		<key>1560DC15-8D54-4CCC-83F7-BFA87F62A2C7</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>21861034-0E83-45AA-A692-7B00AD319CCB</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>15B1D160-CE6F-4FB0-9EE6-9112A1F5D6AB</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>21861034-0E83-45AA-A692-7B00AD319CCB</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>21861034-0E83-45AA-A692-7B00AD319CCB</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>12D6057F-03ED-470C-825C-9384EF6E2CF1</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>27FD0E60-31BF-4B51-98B9-546816CEACEE</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>21861034-0E83-45AA-A692-7B00AD319CCB</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>12688F1D-D733-4F1C-97E1-F878CCCA4263</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string>Open RegexSequences.pl for customization.</string>
+			</dict>
+		</array>
+		<key>7604D574-7E19-4E7E-8069-52989B2CDD0D</key>
+		<array/>
+		<key>7C178ED0-9E25-4A43-AF29-F8AA73CB3A35</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>21861034-0E83-45AA-A692-7B00AD319CCB</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>BA2E50F7-8FBB-4D4E-A6D4-397F48024C34</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>21861034-0E83-45AA-A692-7B00AD319CCB</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Matthew Lancellotti</string>
+	<key>description</key>
+	<string>Perform regex replacements on copied text, and save sequences of regexs for future use!</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>regex v1.7.0</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<true/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>12D6057F-03ED-470C-825C-9384EF6E2CF1</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>96</integer>
+				<key>keyword</key>
+				<string>regex</string>
+				<key>queuedelaycustom</key>
+				<integer>1</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>script</key>
+				<string>use VeryKiwiHelpers;
+my $query = trim_left(q${query}$);
+
+if ( $query =~ m/^sq?[^\s\w]/ ) {
+	use VeryKiwiFilter;
+	my_filter( $query );
+}
+else{
+	print q(&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;items&gt;);
+	use VeryKiwiAlfred;
+	entry({
+		title =&gt; 'regex',
+		subtitle =&gt; "Execute '$query' saved regex.",
+		arg =&gt; $query
+	});
+	print q(&lt;/items&gt;);
+}</string>
+				<key>subtext</key>
+				<string>Perform a native Perl regex substitution on the content you just copied.</string>
+				<key>title</key>
+				<string>regex</string>
+				<key>type</key>
+				<integer>4</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>27FD0E60-31BF-4B51-98B9-546816CEACEE</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>96</integer>
+				<key>script</key>
+				<string>use VeryKiwiFilter;
+print command_to_output(q${query}$);
+</string>
+				<key>type</key>
+				<integer>4</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>21861034-0E83-45AA-A692-7B00AD319CCB</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>96</integer>
+				<key>keyword</key>
+				<string>s</string>
+				<key>queuedelaycustom</key>
+				<integer>1</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>script</key>
+				<string># no point in trimming left because the keyword would fail anyway:
+my $query = q${query}$;
+
+if ( $query =~ m/^[^\s\w]/ ) {
+	use VeryKiwiFilter;
+	my_filter( 's'.$query );
+}
+else{
+	die # a dead filter will not appear as an Alfred option
+}
+</string>
+				<key>subtext</key>
+				<string>Perform a native Perl regex substitution on the content you just copied.</string>
+				<key>title</key>
+				<string>s/search/and replace!/g</string>
+				<key>type</key>
+				<integer>4</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>15B1D160-CE6F-4FB0-9EE6-9112A1F5D6AB</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>sourcefile</key>
+				<string>~/Library/Application Support/Alfred 2/Workflow Data/com.verykiwi.regex/RegexSequences.pl</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openfile</string>
+			<key>uid</key>
+			<string>12688F1D-D733-4F1C-97E1-F878CCCA4263</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>96</integer>
+				<key>keyword</key>
+				<string>sq</string>
+				<key>queuedelaycustom</key>
+				<integer>1</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>script</key>
+				<string># no point in trimming left because the keyword would fail anyway:
+my $query = q${query}$;
+
+if ( $query =~ m/^[^\s\w]/ ) {
+	use VeryKiwiFilter;
+	my_filter( 'sq'.$query );
+}
+else{
+	die # a dead filter will not appear as an Alfred option
+}
+</string>
+				<key>subtext</key>
+				<string>Perform a native Perl regex substitution on the content you just copied.</string>
+				<key>title</key>
+				<string>s/search/and replace!/g</string>
+				<key>type</key>
+				<integer>4</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>BA2E50F7-8FBB-4D4E-A6D4-397F48024C34</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>96</integer>
+				<key>keyword</key>
+				<string>tr</string>
+				<key>queuedelaycustom</key>
+				<integer>1</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>script</key>
+				<string># no point in trimming left because the keyword would fail anyway:
+my $query = q${query}$;
+
+if ( $query =~ m/^[^\s\w]/ ) {
+	use VeryKiwiFilter;
+	my_filter( 'tr'.$query );
+}
+else{
+	die # a dead filter will not appear as an Alfred option
+}
+</string>
+				<key>subtext</key>
+				<string>Perform a "tr" translation on the content you just copied (Perl-style syntax).</string>
+				<key>title</key>
+				<string>tr/search/and replace!/</string>
+				<key>type</key>
+				<integer>4</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>1560DC15-8D54-4CCC-83F7-BFA87F62A2C7</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>96</integer>
+				<key>keyword</key>
+				<string>y</string>
+				<key>queuedelaycustom</key>
+				<integer>1</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>script</key>
+				<string># no point in trimming left because the keyword would fail anyway:
+my $query = q${query}$;
+
+if ( $query =~ m/^[^\s\w]/ ) {
+	use VeryKiwiFilter;
+	my_filter( 'y'.$query );
+}
+else{
+	die # a dead filter will not appear as an Alfred option
+}
+</string>
+				<key>subtext</key>
+				<string>Perform a "tr" translation on the content you just copied (Perl-style syntax).</string>
+				<key>title</key>
+				<string>tr/search/and replace!/</string>
+				<key>type</key>
+				<integer>4</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>7C178ED0-9E25-4A43-AF29-F8AA73CB3A35</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>96</integer>
+				<key>queuedelaycustom</key>
+				<integer>1</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>script</key>
+				<string># coming soon! m</string>
+				<key>subtext</key>
+				<string>Perform a native Perl regex match on the content you just copied.</string>
+				<key>title</key>
+				<string>m/match that regex!/</string>
+				<key>type</key>
+				<integer>4</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>7604D574-7E19-4E7E-8069-52989B2CDD0D</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>Version 1.7.0
+
+This code may be re-used in part or in whole in other projects, but the following attribution (credit line) must always be included:
+
+"Regex tool by Matthew Lancellotti | code.instructorium.com/regex or matt.verykiwi.com/regex | CC-BY-4.0"
+
+This work is licensed under the Creative Commons Attribution 4.0 International License.  To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/.
+
+
+############################ HOW TO USE ############################
+
+For the s/ prefix, the code uses eval to get the full native behavior.  The o and p options are useless but allowed.  The r option is not allowed.
+
+Use case: s/\b pigeon(s?) \b/quail$1/xgi
+
+
+For sq/ prefix, there is no escaping or interpolation whatsoever.  The regex delimiters may not be escaped either, so you MUST pick a unique character for them (e.g. s%\qquad 2/3%\quad 2/3% ),or in the case of brackets, have proper nesting.  In addition to the above exclusions, the e, x, and s options are not available.  The i option is still available!
+
+Use case: sq|regexstuff|stuff|g
+
+
+For the tr/ and y/ prefixes, it is again native behavior.</string>
+	<key>uidata</key>
+	<dict>
+		<key>12688F1D-D733-4F1C-97E1-F878CCCA4263</key>
+		<dict>
+			<key>ypos</key>
+			<real>130</real>
+		</dict>
+		<key>12D6057F-03ED-470C-825C-9384EF6E2CF1</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+		<key>1560DC15-8D54-4CCC-83F7-BFA87F62A2C7</key>
+		<dict>
+			<key>ypos</key>
+			<real>310</real>
+		</dict>
+		<key>15B1D160-CE6F-4FB0-9EE6-9112A1F5D6AB</key>
+		<dict>
+			<key>ypos</key>
+			<real>110</real>
+		</dict>
+		<key>21861034-0E83-45AA-A692-7B00AD319CCB</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+		<key>27FD0E60-31BF-4B51-98B9-546816CEACEE</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+		<key>7604D574-7E19-4E7E-8069-52989B2CDD0D</key>
+		<dict>
+			<key>ypos</key>
+			<real>570</real>
+		</dict>
+		<key>7C178ED0-9E25-4A43-AF29-F8AA73CB3A35</key>
+		<dict>
+			<key>ypos</key>
+			<real>410</real>
+		</dict>
+		<key>BA2E50F7-8FBB-4D4E-A6D4-397F48024C34</key>
+		<dict>
+			<key>ypos</key>
+			<real>210</real>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string>code.instructorium.com/regex</string>
+</dict>
+</plist>
