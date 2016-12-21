@@ -1,7 +1,7 @@
 # Regex
 Run and save regexes with Alfred!
 
-You can download regex [here]().
+You can download regex [here](http://learnnation.org/regex.alfredworkflow).
 
 ## How to use Regex
 
