@@ -1,9 +1,12 @@
 # Regex
 Run and save regexes with Alfred!
 
+You can download regex [directly](http://learnnation.org/regex.alfredworkflow).
+
 Regex is listed on [packal](http://www.packal.org/workflow/regex).
 
-You can download regex [directly](http://learnnation.org/regex.alfredworkflow).
+There is an [Alfred Forum page](http://www.alfredforum.com/topic/5100-regex-run-and-save-regular-expressions/) for Regex.
+
 
 ## How to use Regex
 
