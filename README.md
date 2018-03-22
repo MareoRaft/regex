@@ -7,6 +7,7 @@ Regex is listed on [packal](http://www.packal.org/workflow/regex).
 
 There is an [Alfred Forum page](http://www.alfredforum.com/topic/5100-regex-run-and-save-regular-expressions/) for Regex.
 
+View some [examples of usage](http://matthewlancellotti.com/regex/).
 
 ## How to use Regex
 
