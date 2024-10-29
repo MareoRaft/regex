@@ -1,6 +1,8 @@
 # Regex
 Run and save regexes with Alfred!
 
+![](regextr.png)
+
 ## Install
 You must have [Alfred](https://www.alfredapp.com) (Macs only) installed with Powerpack enabled.  You can download regex [directly](http://learnnation.org/Regex.alfredworkflow).  Simply open the downloaded file to add Regex to your Alfred.
 
